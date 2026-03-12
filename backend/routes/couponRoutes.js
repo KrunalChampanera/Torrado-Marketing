@@ -1,16 +1,12 @@
-const router = require("express").Router();
-const auth = require("../middlewares/authMiddleware");
-const admin = require("../middlewares/adminMiddleware");
+const router = require("express").Router()
+
 const {
-  createCoupon,
-  getCoupons,
-  updateCoupon,
-  deleteCoupon
-} = require("../controllers/couponController");
+getCoupons,
+applyCoupon
+} = require("../controllers/couponController")
 
-router.get("/", auth, admin, getCoupons);
-router.post("/", auth, admin, createCoupon);
-router.put("/:id", auth, admin, updateCoupon);
-router.delete("/:id", auth, admin, deleteCoupon);
+router.get("/", getCoupons)
 
-module.exports = router;
+router.post("/apply", applyCoupon)
+
+module.exports = router

@@ -17,6 +17,8 @@ import Cart from "./pages/Cart"
 import ProductDetails from "./pages/ProductDetails.js"
 import Wishlist from "./pages/Wishlist.jsx"
 import Checkout from "./pages/Checkout.jsx"
+import Coupons from "./components/Coupons.jsx"
+import Contact from "./pages/Contact.jsx"
 
 
 function App() {
@@ -43,6 +45,9 @@ function App() {
             <Route path="/product/:id" element={<ProductDetails/>} />
             <Route path="/wishlist" element={<Wishlist/>} />
             <Route path="/checkout" element={<Checkout/>} />
+            <Route path="/coupon" element={<Coupons/>} />
+
+            <Route path="/contact" element={<Contact/>} />
           </Routes>
 
           <Footer/>

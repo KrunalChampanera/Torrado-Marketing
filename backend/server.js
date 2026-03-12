@@ -29,6 +29,7 @@ app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/banners", require("./routes/bannerRoutes"));
 app.use("/api/blogs" , require("./routes/blogRoutes"));
 
+
 const errorHandler = require("./middlewares/errorMiddleware");
 app.use(errorHandler);
 

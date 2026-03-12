@@ -1,21 +1,65 @@
-const { Coupon } = require("../models");
-
-exports.createCoupon = async (req, res) => {
-  const coupon = await Coupon.create(req.body);
-  res.status(201).json(coupon);
-};
+const { Coupon } = require("../models")
 
 exports.getCoupons = async (req, res) => {
-  const coupons = await Coupon.findAll();
-  res.json(coupons);
-};
 
-exports.updateCoupon = async (req, res) => {
-  await Coupon.update(req.body, { where: { id: req.params.id } });
-  res.json({ message: "Coupon updated" });
-};
+try{
 
-exports.deleteCoupon = async (req, res) => {
-  await Coupon.destroy({ where: { id: req.params.id } });
-  res.json({ message: "Coupon deleted" });
-};
+const coupons = await Coupon.findAll()
+
+res.json(coupons)
+
+}catch(error){
+
+console.error("Coupon Fetch Error:", error)
+
+res.status(500).json({
+message: "Failed to fetch coupons"
+})
+
+}
+
+}
+
+
+
+exports.applyCoupon = async (req, res) => {
+
+try{
+
+const { code } = req.body
+
+if(!code){
+
+return res.status(400).json({
+message:"Coupon code required"
+})
+
+}
+
+const coupon = await Coupon.findOne({
+where:{ code }
+})
+
+if(!coupon){
+
+return res.status(404).json({
+message:"Invalid coupon"
+})
+
+}
+
+res.json({
+discount: coupon.discount
+})
+
+}catch(error){
+
+console.error("Coupon Apply Error:", error)
+
+res.status(500).json({
+message:"Coupon apply failed"
+})
+
+}
+
+}
