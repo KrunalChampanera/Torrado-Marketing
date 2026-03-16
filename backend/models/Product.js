@@ -42,6 +42,15 @@ const Product = sequelize.define("Product", {
     defaultValue: false
   },
 
+  couponId: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    references: {
+      model: "coupons",
+      key: "id"
+    }
+  },
+
   CategoryId: {
     type: DataTypes.INTEGER,
     allowNull: false

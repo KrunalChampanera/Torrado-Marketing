@@ -1,12 +1,14 @@
-const router = require("express").Router()
+const express = require("express");
+const { getCoupons, applyCoupon } = require("../controllers/couponController");
 
-const {
-getCoupons,
-applyCoupon
-} = require("../controllers/couponController")
+const router = express.Router();
 
-router.get("/", getCoupons)
+/* ================= PUBLIC COUPON ROUTES ================= */
 
-router.post("/apply", applyCoupon)
+// Get all active coupons
+router.get("/", getCoupons);
 
-module.exports = router
+// Apply coupon code
+router.post("/apply", applyCoupon);
+
+module.exports = router;

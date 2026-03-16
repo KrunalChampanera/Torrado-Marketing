@@ -1,22 +1,36 @@
-const { DataTypes } = require("sequelize");
-const { sequelize } = require("../config/db");
+const { DataTypes, Model } = require("sequelize")
+const { sequelize } = require("../config/db")
 
-const LoginLog = sequelize.define("LoginLog", {
+class LoginLog extends Model {}
 
+LoginLog.init({
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
   userId: {
     type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: "Users",
+      key: "id"
+    }
+  },
+  email: {
+    type: DataTypes.STRING,
     allowNull: false
   },
-
-  email: {
-    type: DataTypes.STRING
-  },
-
   loginTime: {
     type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW
+    defaultValue: DataTypes.NOW,
+    allowNull: false
   }
+}, {
+  sequelize,
+  modelName: "LoginLog",
+  tableName: "LoginLogs",
+  timestamps: false
+})
 
-});
-
-module.exports = LoginLog;
+module.exports = LoginLog

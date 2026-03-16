@@ -6,6 +6,7 @@ import {
   FaShoppingBag,
   FaStar,
 } from "react-icons/fa";
+import InstagramSection from "../components/InstagramSection";
 
 const AboutUs = () => {
   return (
@@ -189,31 +190,7 @@ const AboutUs = () => {
       </section>
 
       {/* ================= INSTAGRAM SECTION ================= */}
-      <section style={{ padding: "100px 0" }}>
-        <Container>
-          <h3 className="text-center fw-bold mb-5">
-            Torado’s Instagram
-          </h3>
-
-          <Row>
-            {[
-              "https://images.unsplash.com/photo-1510557880182-3a935b4a12a7",
-              "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
-              "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
-              "https://images.unsplash.com/photo-1585386959984-a4155223166d",
-              "https://images.unsplash.com/photo-1583744946564-b52ac1c389c8",
-            ].map((img, i) => (
-              <Col md={2} key={i} className="mb-3">
-                <img
-                  src={img}
-                  alt=""
-                  className="img-fluid rounded"
-                />
-              </Col>
-            ))}
-          </Row>
-        </Container>
-      </section>
+            <InstagramSection/>
 
     </div>
   );

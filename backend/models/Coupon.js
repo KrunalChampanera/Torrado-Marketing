@@ -1,42 +1,41 @@
-const { DataTypes } = require("sequelize")
+const { DataTypes, Model } = require("sequelize")
 const { sequelize } = require("../config/db")
 
-const Coupon = sequelize.define("Coupon", {
+class Coupon extends Model {}
 
-title:{
-type:DataTypes.STRING
-},
-
-description:{
-type:DataTypes.TEXT
-},
-
-code:{
-type:DataTypes.STRING,
-unique:true
-},
-
-discount:{
-type:DataTypes.FLOAT
-},
-
-image:{
-type:DataTypes.STRING
-},
-
-oldPrice:{
-type:DataTypes.FLOAT
-},
-
-newPrice:{
-type:DataTypes.FLOAT
-},
-
-status:{
-type:DataTypes.BOOLEAN,
-defaultValue:true
-}
-
+Coupon.init({
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  code: {
+    type: DataTypes.STRING,
+    unique: true,
+    allowNull: false
+  },
+  discountType: {
+    type: DataTypes.ENUM("percentage", "fixed"),
+    allowNull: false,
+    defaultValue: "percentage"
+  },
+  discountValue: {
+    type: DataTypes.FLOAT,
+    allowNull: false
+  },
+  expiryDate: {
+    type: DataTypes.DATE,
+    allowNull: true
+  },
+  isActive: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: true
+  }
+}, {
+  sequelize,
+  modelName: "Coupon",
+  tableName: "coupons",
+  timestamps: true
 })
 
 module.exports = Coupon

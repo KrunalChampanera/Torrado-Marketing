@@ -1,3 +1,15 @@
+* {
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  scroll-behavior: smooth;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +47,33 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Smooth scroll for all anchor links */
+a {
+  scroll-behavior: smooth;
+}
+
+/* Smooth scroll for buttons */
+button {
+  scroll-behavior: smooth;
+}
+
+/* Additional smooth transition for page scrolling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff6b35;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e85a2a;
 }
